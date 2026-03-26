@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { FaBell, FaChevronDown } from 'react-icons/fa';
-import { FiSearch } from 'react-icons/fi';
 import './Header.css';
 
 export default function Header() {
@@ -14,7 +13,6 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-search">
-        <FiSearch className="search-icon" />
         <input type="text" placeholder="search.." />
       </div>
       <div className="header-actions">
