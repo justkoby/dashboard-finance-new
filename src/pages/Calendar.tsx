@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  FaChevronLeft, FaChevronRight, FaTimes, FaPlus
+  FaChevronLeft, FaChevronRight, FaTimes, FaPlus, FaFilter
 } from 'react-icons/fa';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -101,31 +101,49 @@ const initialEvents: Event[] = [
 ];
 
 export default function Calendar() {
-  const [view, setView] = useState<'month' | 'week' | 'day' | 'list'>('month');
   const [_events, _setEvents] = useState<Event[]>(initialEvents);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date(2025, 7, 1)); // August 2025
+
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    type: 'All',
+    date: '',
+    query: ''
+  });
 
   const daysInMonth = (month: number, year: number) => new Date(year, month + 1, 0).getDate();
   const startDayOfMonth = (month: number, year: number) => new Date(year, month, 1).getDay();
 
   const monthName = currentMonth.toLocaleString('default', { month: 'long' }).toUpperCase();
-  const year = currentMonth.getFullYear();
+  const yearNum = currentMonth.getFullYear();
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+  };
+
+  const filteredEvents = _events.filter(event => {
+    const matchesType = filters.type === 'All' || event.type === filters.type;
+    const matchesDate = !filters.date || event.date === filters.date;
+    const matchesQuery = !filters.query || 
+      event.title.toLowerCase().includes(filters.query.toLowerCase()) || 
+      (event.assignee && event.assignee.toLowerCase().includes(filters.query.toLowerCase()));
+    
+    return matchesType && matchesDate && matchesQuery;
+  });
 
   const renderMonthDays = (): React.ReactNode[] => {
     const days: React.ReactNode[] = [];
     const count = daysInMonth(currentMonth.getMonth(), currentMonth.getFullYear());
     const start = startDayOfMonth(currentMonth.getMonth(), currentMonth.getFullYear());
 
-    // Empty spaces
     for (let i = 0; i < start; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
     }
 
-    // Actual days
     for (let i = 1; i <= count; i++) {
-      const dateStr = `${year}-${String(currentMonth.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-      const dayEvents = _events.filter(e => e.date === dateStr);
+      const dateStr = `${yearNum}-${String(currentMonth.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+      const dayEvents = filteredEvents.filter(e => e.date === dateStr);
 
       days.push(
         <div key={i} className="calendar-day" onClick={() => setIsModalOpen(true)}>
@@ -162,21 +180,57 @@ export default function Calendar() {
         <div className="content">
           <div className="page-toolbar">
             <div className="page-heading">
-                <h1>{monthName} {year}</h1>
+                <h1>{monthName} {yearNum}</h1>
             </div>
             
             <div className="page-actions">
-                <div className="view-tabs">
-                    {['month', 'week', 'day', 'list'].map(v => (
-                      <button 
-                        key={v}
-                        className={`view-tab ${view === v ? 'active' : ''}`}
-                        onClick={() => setView(v as any)}
-                      >
-                        {v}
+                <div className="filter-wrapper">
+                  <button 
+                    className={`page-btn ${isFilterOpen ? 'active' : ''}`} 
+                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                  >
+                    <FaFilter /> <span>Filter</span>
+                  </button>
+                  
+                  {isFilterOpen && (
+                    <div className="filter-dropdown">
+                      <div className="filter-group">
+                        <label>Event Type</label>
+                        <select 
+                          value={filters.type} 
+                          onChange={(e) => handleFilterChange('type', e.target.value)}
+                        >
+                          <option>All</option>
+                          <option>Leave Request</option>
+                          <option>Proposal</option>
+                          <option>Project</option>
+                          <option>Task</option>
+                        </select>
+                      </div>
+                      <div className="filter-group">
+                        <label>Filter by Date</label>
+                        <input 
+                          type="date" 
+                          value={filters.date}
+                          onChange={(e) => handleFilterChange('date', e.target.value)}
+                        />
+                      </div>
+                      <div className="filter-group">
+                        <label>Search Name / Title</label>
+                        <input 
+                          type="text" 
+                          placeholder="Search..." 
+                          value={filters.query}
+                          onChange={(e) => handleFilterChange('query', e.target.value)}
+                        />
+                      </div>
+                      <button className="clear-filters" onClick={() => setFilters({ type: 'All', date: '', query: '' })}>
+                        Clear All
                       </button>
-                    ))}
+                    </div>
+                  )}
                 </div>
+
                 <button className="page-btn" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))}>
                    <FaChevronLeft />
                 </button>

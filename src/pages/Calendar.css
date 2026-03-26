@@ -126,31 +126,77 @@
 }
 
 /* Toolbar Specific Overrides */
-.view-tabs {
-  background: #f0f0f0;
-  padding: 3px;
-  border-radius: 8px;
-  display: flex;
+.filter-wrapper {
+  position: relative;
   margin-right: 12px;
 }
 
-.view-tab {
-  padding: 6px 14px;
-  border: none;
-  background: transparent;
-  color: #666;
-  font-weight: 700;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s;
-  text-transform: capitalize;
-  font-size: 0.85rem;
+.filter-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  z-index: 1000;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: slideIn 0.2s ease-out;
 }
 
-.view-tab.active {
-  background: white;
-  color: #1a1a1a;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9a9792;
+  text-transform: uppercase;
+}
+
+.filter-group select, .filter-group input {
+  padding: 8px 10px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #333;
+  outline: none;
+}
+
+.filter-group select:focus, .filter-group input:focus {
+  border-color: #1a3353;
+}
+
+.clear-filters {
+  background: none;
+  border: none;
+  color: #d9392e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: right;
+  padding: 4px 0;
+}
+
+.clear-filters:hover {
+  text-decoration: underline;
+}
+
+.page-btn.active {
+  background: #f0f0f0;
+  border-color: #ddd;
 }
 
 /* Modal Styling Improvements - Matching ReportModal.css */
