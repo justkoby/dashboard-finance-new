@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  FaChevronLeft, FaChevronRight, FaTimes
+  FaChevronLeft, FaChevronRight, FaTimes, FaPlus
 } from 'react-icons/fa';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -155,34 +155,37 @@ export default function Calendar() {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className="dashboard">
       <Sidebar />
-      <div className="main-wrapper">
+      <div className="main">
         <Header />
-        <div className="calendar-content">
-          <div className="calendar-top-bar">
-            <div className="nav-group">
-                 <button className="nav-btn" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))}>
-                   <FaChevronLeft />
-                 </button>
-                 <button className="nav-btn" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))}>
-                   <FaChevronRight />
-                 </button>
-                 <button className="add-event-btn" onClick={() => setIsModalOpen(true)}>Add Event +</button>
+        <div className="content">
+          <div className="page-toolbar">
+            <div className="page-heading">
+                <h1>{monthName} {year}</h1>
             </div>
             
-            <h1 className="calendar-current-date">{monthName} {year}</h1>
-            
-            <div className="view-tabs">
-                {['month', 'week', 'day', 'list'].map(v => (
-                  <button 
-                    key={v}
-                    className={`view-tab ${view === v ? 'active' : ''}`}
-                    onClick={() => setView(v as any)}
-                  >
-                    {v}
-                  </button>
-                ))}
+            <div className="page-actions">
+                <div className="view-tabs">
+                    {['month', 'week', 'day', 'list'].map(v => (
+                      <button 
+                        key={v}
+                        className={`view-tab ${view === v ? 'active' : ''}`}
+                        onClick={() => setView(v as any)}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                </div>
+                <button className="page-btn" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))}>
+                   <FaChevronLeft />
+                </button>
+                <button className="page-btn" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))}>
+                   <FaChevronRight />
+                </button>
+                <button className="page-btn page-btn-primary" onClick={() => setIsModalOpen(true)}>
+                   <FaPlus /> <span>Add Event</span>
+                </button>
             </div>
           </div>
 
@@ -208,50 +211,53 @@ export default function Calendar() {
 function EventModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="modal-overlay">
-      <div className="modern-modal">
-        <div className="modal-close" onClick={onClose}><FaTimes /></div>
-        <h2 className="modal-title">Add / Edit Event</h2>
-        <p className="modal-subtitle">Plan your next big moment: schedule or edit an event to stay on track</p>
-        
-        <div className="form-group">
-          <label>Event Title</label>
-          <input type="text" placeholder="Enter title" />
+      <div className="report-modal">
+        <div className="modal-header">
+           <h2>Add / Edit Event</h2>
+           <button className="close-btn" onClick={onClose}><FaTimes /></button>
         </div>
         
-        <div className="form-row">
-          <div className="form-group">
-            <label>Event Color</label>
-            <div className="color-options">
-               <label className="radio-option">
-                 <input type="radio" name="color" /> <span className="dot danger"></span> Danger
-               </label>
-               <label className="radio-option">
-                 <input type="radio" name="color" /> <span className="dot success"></span> Success
-               </label>
-               <label className="radio-option">
-                 <input type="radio" name="color" /> <span className="dot primary"></span> Primary
-               </label>
-               <label className="radio-option">
-                 <input type="radio" name="color" /> <span className="dot warning"></span> Warning
-               </label>
+        <div className="modal-body">
+            <p className="modal-subtitle">Plan your next big moment: schedule or edit an event to stay on track</p>
+            
+            <div className="form-group">
+              <label>Event Title</label>
+              <input type="text" placeholder="Enter title" />
             </div>
-          </div>
+            
+            <div className="form-group">
+                <label>Event Color</label>
+                <div className="color-options">
+                   <label className="radio-option">
+                     <input type="radio" name="color" /> <span className="dot danger"></span> Danger
+                   </label>
+                   <label className="radio-option">
+                     <input type="radio" name="color" /> <span className="dot success"></span> Success
+                   </label>
+                   <label className="radio-option">
+                     <input type="radio" name="color" /> <span className="dot primary"></span> Primary
+                   </label>
+                   <label className="radio-option">
+                     <input type="radio" name="color" /> <span className="dot warning"></span> Warning
+                   </label>
+                </div>
+            </div>
+            
+            <div className="form-row">
+              <div className="form-group flex-1">
+                <label>Enter Start Date</label>
+                <input type="date" />
+              </div>
+              <div className="form-group flex-1">
+                <label>Enter End Date</label>
+                <input type="date" defaultValue="2026-03-04" />
+              </div>
+            </div>
         </div>
         
-        <div className="form-row">
-          <div className="form-group">
-            <label>Enter Start Date</label>
-            <input type="date" />
-          </div>
-          <div className="form-group">
-            <label>Enter End Date</label>
-            <input type="date" defaultValue="2026-03-04" />
-          </div>
-        </div>
-        
-        <div className="modal-actions">
-           <button className="cancel-btn" onClick={onClose}>Close</button>
-           <button className="save-btn">Add Event</button>
+        <div className="modal-footer">
+           <button className="page-btn" onClick={onClose}>Close</button>
+           <button className="page-btn page-btn-primary">Add Event</button>
         </div>
       </div>
     </div>
