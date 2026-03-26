@@ -22,7 +22,7 @@ import {
 } from "recharts";
 import { 
   FaDownload, FaEllipsisV, FaPlus, FaFileAlt, 
-  FaBell, FaRobot, FaHistory, FaSpinner, FaProjectDiagram, FaFileInvoiceDollar 
+  FaBell, FaRobot, FaHistory, FaSpinner 
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 

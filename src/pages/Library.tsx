@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import ChatWidget from '../components/ChatWidget';
 import { 
-  FaSearch, FaFolder, FaFileAlt, FaDownload, FaHistory, FaFilter, FaFilePdf, FaFileExcel
+  FaSearch, FaFolder, FaDownload, FaHistory, FaFilter, FaFilePdf, FaFileExcel
 } from 'react-icons/fa';
 import './Library.css';
 

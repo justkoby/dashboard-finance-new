@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import ChatWidget from '../components/ChatWidget';
@@ -8,7 +7,6 @@ import {
 import './Calendar.css';
 
 export default function Calendar() {
-  const [currentDate] = useState(new Date(2025, 5, 15)); // June 2025
   
   const events = [
     { day: 5, title: "PAYE Filing Deadline", type: "tax", priority: "high" },

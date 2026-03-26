@@ -1,11 +1,10 @@
 import { useState, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import ChatWidget from '../components/ChatWidget';
 import { 
   FaChevronDown, FaPlus, FaEllipsisV, FaRegFolder, FaRegCheckCircle, 
-  FaRegPlayCircle, FaRegClock, FaUsers, FaCloudUploadAlt, FaFileAlt, FaTimes
+  FaRegPlayCircle, FaRegClock, FaUsers, FaCloudUploadAlt, FaTimes
 } from 'react-icons/fa';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend 
@@ -20,7 +19,6 @@ interface PaymentRequest {
 }
 
 export default function ProjectDetail() {
-  const { id } = useParams();
   const [filter, setFilter] = useState('Monthly');
   const [showPreview, setShowPreview] = useState(false);
   const [uploadStatus, setUploadStatus] = useState('idle');
