@@ -30,7 +30,7 @@
 .header-search input {
   width: 100%;
   height: 48px;
-  padding: 0 16px 0 48px;
+  padding: 0 16px 0 54px; /* Increased padding-left to 54px */
   border: 1px solid #d7d4ce;
   border-radius: 24px;
   background: white;
@@ -49,6 +49,10 @@
   gap: 16px;
 }
 
+.dropdown-container {
+  position: relative;
+}
+
 .org-selector {
   display: flex;
   align-items: center;
@@ -59,6 +63,11 @@
   border: 1px solid #e0e0e0;
   cursor: pointer;
   min-width: 140px;
+  transition: background 0.2s ease;
+}
+
+.org-selector:hover {
+  background: #e8e8e8;
 }
 
 .org-name {
@@ -70,6 +79,61 @@
 .chevron-icon {
   font-size: 0.8rem;
   color: #666;
+  transition: transform 0.3s ease;
+}
+
+.chevron-icon.open {
+  transform: rotate(180deg);
+}
+
+.org-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 200px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdown-item {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover:not(.disabled) {
+  background: #f5f6f8;
+  color: #1a3353;
+}
+
+.dropdown-item.disabled {
+  color: #999;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.inactive-tag {
+  font-size: 0.7rem;
+  background: #f0f0f0;
+  color: #888;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .avatar {
