@@ -1,0 +1,166 @@
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.login-left {
+  flex: 1;
+  background-color: #e8f4fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.field {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.field input {
+  width: 100%;
+  padding: 1.25rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  color: #1a1a1a;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.field input::placeholder {
+  color: #8e8e93;
+}
+
+.password-field {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8e8e93;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: 20px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.options label {
+  color: #707070;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.options label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.options .forgot {
+  text-decoration: none;
+  color: #707070;
+}
+
+.login-button {
+  width: 100%;
+  padding: 1.25rem;
+  background: #333333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.login-button:hover {
+  background: #222222;
+}
+
+.login-right {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.branding {
+  text-align: center;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.workspace-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: -0.02em;
+}
+
+.login-footer {
+  position: absolute;
+  bottom: 2rem;
+  color: #707070;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+  .login-right {
+    display: none;
+  }
+}

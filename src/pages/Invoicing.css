@@ -1,0 +1,244 @@
+.invoicing-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+
+.invoicing-page .content {
+  padding: 32px;
+  width: 100%;
+}
+
+.receivables-header {
+  margin-bottom: 32px;
+}
+
+.receivables-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.aging-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.aging-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.aging-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.aging-card.blue::before { background-color: #3498db; }
+.aging-card.orange::before { background-color: #f39c12; }
+.aging-card.red::before { background-color: #e74c3c; }
+.aging-card.darkred::before { background-color: #c0392b; }
+
+.aging-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.a-val {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.a-sub {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.aging-icon {
+  font-size: 1.5rem;
+  opacity: 0.1;
+}
+
+.list-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.search-box {
+  position: relative;
+  width: 350px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fdfdfd;
+}
+
+.s-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.filter-group {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-group select {
+  padding: 8px 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  color: #666;
+}
+
+.cp-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-name { font-weight: 700; color: #1a1a1a; }
+.p-name { font-size: 0.75rem; color: #888; }
+
+.status-badge.sent { background-color: #e3f2fd; color: #1976d2; }
+.status-badge.overdue { background-color: #ffebee; color: #d32f2f; }
+.status-badge.partly-paid { background-color: #fff3e0; color: #f57c00; }
+
+/* INVOICE MODAL */
+.invoice-modal {
+  background: white;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.invoice-form {
+  padding: 32px;
+}
+
+.line-items-section {
+  margin-top: 32px;
+}
+
+.line-items-section h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.line-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.line-items-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888;
+  padding: 8px;
+}
+
+.line-items-table td {
+  padding: 8px;
+}
+
+.line-items-table input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.remove-item {
+  color: #d91e18;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.add-item-btn {
+  background: none;
+  border: 1px dashed #ddd;
+  padding: 8px 20px;
+  border-radius: 8px;
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.invoice-totals {
+  margin-left: auto;
+  width: 250px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.total-row.grand {
+  font-weight: 800;
+  font-size: 1.1rem;
+  border-top: 2px solid #1a1a1a;
+  padding-top: 12px;
+}

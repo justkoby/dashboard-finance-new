@@ -1,0 +1,89 @@
+.settings-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+
+.settings-page .content {
+  padding: 32px;
+  width: 100%;
+}
+
+.settings-tabs {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.s-card {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  margin-top: 24px;
+}
+
+.s-header {
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+
+.cat-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cat-item {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.add-cat-btn {
+  border: 1px dashed #ddd;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #888;
+  cursor: pointer;
+}
+
+.role-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.role-name {
+  display: block;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.role-desc {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.toggle-switch {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #3498db;
+  margin-top: 10px;
+}

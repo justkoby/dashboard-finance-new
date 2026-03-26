@@ -1,0 +1,107 @@
+.library-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+
+.library-page .content {
+  padding: 32px;
+  width: 100%;
+}
+
+.library-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.folders-sidebar h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.folder-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.folder-item:hover {
+  border-color: #1a1a1a;
+  transform: translateX(4px);
+}
+
+.folder-item.active {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: white;
+}
+
+.folder-item.active .f-icon { color: white; }
+.folder-item.active .f-count { color: #888; }
+
+.f-icon {
+  font-size: 1.4rem;
+  color: #1a1a1a;
+}
+
+.f-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.f-count {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.explorer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.explorer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.file-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.type-icon {
+  font-size: 1.2rem;
+}
+
+.type-icon.pdf { color: #e74c3c; }
+.type-icon.excel { color: #27ae60; }
+
+.uppercase { text-transform: uppercase; font-size: 0.75rem; font-weight: 800; }

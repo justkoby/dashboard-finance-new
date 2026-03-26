@@ -1,0 +1,159 @@
+.calendar-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+
+.calendar-page .content {
+  padding: 32px;
+  width: 100%;
+}
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.calendar-main {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.cal-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #eee;
+  border: 1px solid #eee;
+}
+
+.weekday {
+  background: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.day {
+  background: white;
+  min-height: 120px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.day.today {
+  background: #f0f7ff;
+}
+
+.day.today .day-num {
+  background: #1a1a1a;
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.day-num {
+  font-weight: 700;
+  color: #444;
+}
+
+.day-events {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.event-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.event-dot.tax { background: #e74c3c; }
+.event-dot.invoice { background: #3498db; }
+.event-dot.payroll { background: #f1c40f; }
+.event-dot.milestone { background: #2ecc71; }
+
+.calendar-sidebar h3 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.upcoming-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: transform 0.2s;
+}
+
+.upcoming-item:hover {
+  transform: translateX(4px);
+}
+
+.upcoming-item.high { border-left: 4px solid #e74c3c; }
+.upcoming-item.medium { border-left: 4px solid #3498db; }
+
+.u-date {
+  font-weight: 800;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+  text-align: center;
+  min-width: 50px;
+}
+
+.u-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+}
+
+.u-type {
+  font-size: 0.75rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

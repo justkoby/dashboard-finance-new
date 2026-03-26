@@ -1,0 +1,116 @@
+.choose-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #e8f4fd;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Subtle background decoration to match the waves in the image */
+.choose-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(0, 102, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.choose-container {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  z-index: 1;
+}
+
+.choose-header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #1a2b4b;
+  margin-bottom: 2rem;
+}
+
+.choose-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0c1e3a;
+  margin-bottom: 0.5rem;
+}
+
+.choose-header p {
+  color: #5c6c84;
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+}
+
+.department-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.department-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid #1a2b4b;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.department-card:hover {
+  background: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 60, 120, 0.1);
+  border-color: #0066ff;
+}
+
+.department-card:nth-child(3) {
+  background: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.dept-icon {
+  color: #1a2b4b;
+  margin-bottom: 1.5rem;
+}
+
+.department-card:hover .dept-icon {
+  color: #0066ff;
+}
+
+.dept-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: #1a2b4b;
+}
+
+.choose-footer {
+  margin-top: 4rem;
+  color: #5c6c84;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .department-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
